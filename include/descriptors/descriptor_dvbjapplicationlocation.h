@@ -1,0 +1,51 @@
+/*++
+*    libtssi - A library for parsing MPEG-2 TS and DVB Service Information
+*
+*    Copyright (C) 2009, 2016 Martin Hoernig (goforcode.com)
+*
+*    This program is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU General Public License as published by
+*    the Free Software Foundation, either version 3 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU General Public License for more details.
+*
+*    You should have received a copy of the GNU General Public License
+*    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*
+--*/
+
+#ifndef __TSSI_DESCRIPTOR_DVBJAPPLICATIONLOCATION_H_INCLUDED__
+#define __TSSI_DESCRIPTOR_DVBJAPPLICATIONLOCATION_H_INCLUDED__
+
+#include "descriptors/descriptor.h"
+
+namespace tssi {
+
+	class TS_EXTERN Descriptor_DvbJApplicationLocation : public Descriptor	{
+	private:
+		TS_PRIVATE_EXPORT( TS_STRING m_base_directory );
+		TS_PRIVATE_EXPORT( TS_STRING m_class_extension );
+		TS_PRIVATE_EXPORT( TS_STRING m_initial_class );
+
+	public:
+		static const TS_BYTE kDescriptorTag = 0x04;
+
+		Descriptor_DvbJApplicationLocation();
+		virtual ~Descriptor_DvbJApplicationLocation();
+
+		TS_VOID	Reset();
+		TS_BOOL	Process(TS_PBYTE pbuf, unsigned in_len);
+
+		const TS_STRING& GetBaseDirectory() const;
+		const TS_STRING& GetClasspathExtension() const;
+		const TS_STRING& GetInitialClass() const;
+
+	};
+
+}
+
+#endif // __TSSI_DESCRIPTOR_DVBJAPPLICATIONLOCATION_H_INCLUDED__
