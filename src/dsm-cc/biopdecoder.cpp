@@ -21,10 +21,12 @@
 #include "dsm-cc/biopdecoder.h"
 #include <fstream>
 
-typedef int mode_t;
+typedef int tssi_mode_t;
 
 #ifdef _WIN32
 #include <direct.h>
+#else
+#include <sys/stat.h>
 #endif // _WIN32
 #include <cerrno>
 
@@ -96,7 +98,7 @@ TS_BOOL tssi::BiopDecoder::Decode( TS_STRING host_directory )
 		directory.pop_back();
 
 	// create directory
-	mode_t nMode = 0733; // UNIX style permissions
+	tssi_mode_t nMode = 0733; // UNIX style permissions
 	int nError = 0;
 	#if defined(_WIN32)
 		nError = _mkdir( directory.c_str() ); // can be used on Windows
@@ -195,7 +197,7 @@ TS_BOOL tssi::BiopDecoder::ProcessBinding(Binding binding, TS_STRING directory)
 			directory += binding.GetIdData();
 
 			// create directory
-			mode_t nMode = 0733; // UNIX style permissions
+			tssi_mode_t nMode = 0733; // UNIX style permissions
 			int nError = 0;
 			#if defined(_WIN32)
 				nError = _mkdir( directory.c_str() ); // can be used on Windows

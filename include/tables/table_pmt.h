@@ -39,7 +39,7 @@ namespace tssi {
 			std::vector<EsInformation>		es_information;
 		};
 
-		TS_PRIVATE_EXPORT( (std::map<TS_WORD, PmtInformation> m_pmt) ); // first: program_number
+		TS_PRIVATE_EXPORT(std::map<TS_WORD, PmtInformation> m_pmt); // first: program_number
 
 		DescriptorList m_missing_descriptor_list;
 

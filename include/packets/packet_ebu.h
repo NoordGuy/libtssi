@@ -101,7 +101,7 @@ namespace tssi {
 		TS_PVOID m_callback_data;
 
 		TS_PRIVATE_EXPORT(std::vector<PesPacket> m_pes_packet_list);
-		TS_PRIVATE_EXPORT( (std::map<TS_DWORD, EbuPage*> m_ebu_pages) );
+		TS_PRIVATE_EXPORT(std::map<TS_DWORD, EbuPage*> m_ebu_pages);
 
 	public:
 		Packet_Ebu();
