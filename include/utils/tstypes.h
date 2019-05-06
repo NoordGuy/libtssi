@@ -21,6 +21,7 @@
 #ifndef __TSSI_TSTYPES_H_INCLUDED__
 #define __TSSI_TSTYPES_H_INCLUDED__
 
+#include <cstring>
 #include <string>
 
 typedef void					TS_VOID;
@@ -72,7 +73,7 @@ const TS_TIME TS_TIME_EMPTY = {0};
 #	define TS_PRIVATE_EXPORT(x) \
 		__pragma(warning(push)) __pragma(warning(disable: 4251)) (x); __pragma(warning(pop))
 #else
-#	define TS_PRIVATE_EXPORT(x) (x)
+#	define TS_PRIVATE_EXPORT(...) __VA_ARGS__
 #endif
 
 typedef TS_VOID (*TS_CALLBACK) (TS_PVOID);
